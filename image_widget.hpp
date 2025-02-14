@@ -18,7 +18,7 @@ class ImageWidget : public QWidget {
     public:
     explicit ImageWidget(QWidget* parent = nullptr) noexcept;
 
-    void showImage(std::span<const std::span<const std::uint16_t>> imageData) noexcept;
+    void showImage(std::span<const std::uint16_t> imageData, int width, int height) noexcept;
     void showScale(int scale) noexcept;
 
     private:

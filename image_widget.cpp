@@ -42,24 +42,24 @@ ImageWidget::ImageWidget(QWidget* parent) noexcept : QWidget{parent} {
  * @brief Ändert das zu zeigende Bild.
  * @author Björn Schäpers
  * @param[in] imageData Die Bilddaten.
+ * @param[in] width Bild-Breite.
+ * @param[in] height Bild-Höhe.
  */
-void ImageWidget::showImage(std::span<const std::span<const uint16_t>> imageData) noexcept {
+void ImageWidget::showImage(std::span<const uint16_t> imageData, int width, int height) noexcept {
     auto min = std::numeric_limits<std::uint16_t>::max();
     auto max = std::numeric_limits<std::uint16_t>::min();
 
-    std::ranges::for_each(imageData | std::views::join, [&min, &max](std::uint16_t pixel) noexcept {
+    std::ranges::for_each(imageData, [&min, &max](std::uint16_t pixel) noexcept {
         min = std::min(min, pixel);
         max = std::max(max, pixel);
         return;
     });
 
-    const auto width  = imageData.size();
-    const auto height = imageData.front().size();
     const auto scale  = 256. / (max - min + 1);
     QImage     image(width, height, QImage::Format_Grayscale8);
     auto       bits = image.bits();
 
-    std::ranges::transform(imageData | std::views::join, bits, [scale, min](std::uint16_t pixel) noexcept {
+    std::ranges::transform(imageData, bits, [scale, min](std::uint16_t pixel) noexcept {
         return static_cast<std::uint8_t>(255. - std::clamp((pixel - min) * scale, 0., 255.));
     });
 
@@ -68,7 +68,7 @@ void ImageWidget::showImage(std::span<const std::span<const uint16_t>> imageData
     Images[2] = QPixmap::fromImage(image.scaled(width / 4, height / 4));
     Images[3] = QPixmap::fromImage(image.scaled(width / 8, height / 8));
 
-    showScale(0);
+    showScale(3);
 
     return;
 }

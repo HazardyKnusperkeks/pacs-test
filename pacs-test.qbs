@@ -25,8 +25,12 @@ Project {
     Application {
         files: [
             "contrast-main.cpp",
+            "image.cpp",
+            "image.hpp",
             "image_widget.cpp",
             "image_widget.hpp",
+            "main_widget.cpp",
+            "main_widget.hpp",
         ]
         name: "Enhance Contrast"
         version: "0.1.0"
