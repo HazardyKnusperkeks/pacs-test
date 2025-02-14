@@ -7,6 +7,7 @@
 #include "list_view.hpp"
 
 #include <QHBoxLayout>
+#include <QHeaderView>
 #include <QTreeView>
 
 /**
@@ -45,7 +46,19 @@ ListView::ListView(QWidget* parent) noexcept : QWidget{parent} {
  */
 void ListView::setModel(QAbstractItemModel* model) noexcept {
     TheView->setModel(model);
+    TheView->header()->resizeSections(QHeaderView::ResizeMode::ResizeToContents);
     return;
+}
+
+/**
+ * @brief Setzt die empfohlene Größe des Widgets.
+ * @author Björn Schäpers
+ * @return Die Größe.
+ *
+ * Das ist für das Beispiel in diesem Programm angepasst.
+ */
+QSize ListView::sizeHint(void) const noexcept {
+    return {600, 400};
 }
 
 #include "moc_list_view.cpp"

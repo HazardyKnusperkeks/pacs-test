@@ -19,6 +19,8 @@ class ListView : public QWidget {
 
     void setModel(QAbstractItemModel* model) noexcept;
 
+    QSize sizeHint(void) const noexcept override;
+
     private:
     QTreeView* TheView;
 };

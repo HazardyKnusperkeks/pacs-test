@@ -5,6 +5,7 @@
  */
 
 #include "list_view.hpp"
+#include "person_model.hpp"
 
 #include <QApplication>
 
@@ -19,7 +20,11 @@
 int main(int argc, char* argv[]) {
     QApplication app{argc, argv};
 
+    PersonModel model;
+    model.populateWithTestData();
+
     ListView view;
+    view.setModel(&model);
     view.show();
 
     return QApplication::exec();
