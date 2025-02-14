@@ -9,10 +9,18 @@
 
 #include <QWidget>
 
+class QAbstractItemModel;
+class QTreeView;
+
 class ListView : public QWidget {
     Q_OBJECT
     public:
     explicit ListView(QWidget* parent = nullptr) noexcept;
+
+    void setModel(QAbstractItemModel* model) noexcept;
+
+    private:
+    QTreeView* TheView;
 };
 
 #endif //LIST_VIEW_HPP
