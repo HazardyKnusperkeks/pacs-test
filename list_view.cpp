@@ -6,6 +6,9 @@
 
 #include "list_view.hpp"
 
+#include "columns.hpp"
+#include "vip_delegate.hpp"
+
 #include <QHBoxLayout>
 #include <QHeaderView>
 #include <QTreeView>
@@ -33,6 +36,8 @@ ListView::ListView(QWidget* parent) noexcept : QWidget{parent} {
     TheView->setItemsExpandable(false);
     TheView->setRootIsDecorated(false);
     TheView->setUniformRowHeights(true);
+
+    TheView->setItemDelegateForColumn(static_cast<int>(Column::Vip), new VipDelegate{this});
 
     auto layout = new QHBoxLayout{this};
     layout->addWidget(TheView);

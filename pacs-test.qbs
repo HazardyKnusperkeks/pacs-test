@@ -10,6 +10,8 @@ Project {
             "main.cpp",
             "person_model.cpp",
             "person_model.hpp",
+            "vip_delegate.cpp",
+            "vip_delegate.hpp",
         ]
         name: "List View"
         version: "0.1.0"
