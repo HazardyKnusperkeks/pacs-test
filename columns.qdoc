@@ -1,0 +1,33 @@
+/**
+ * @file
+ * @brief Enthält die Dokumentation der Spalten-Nummern.
+ * @author Björn Schäpers
+ */
+
+/**
+ * @enum Column
+ * @brief Beschreibt die vorhanden Spalten.
+ * @author Björn Schäpers
+ * @since V0.1 - 14.02.2025
+ *
+ * @var Column Column::Image
+ * @brief Die Bild-Spalte.
+ *
+ * @var Column Column::FirstName
+ * @brief Die Vornamen-Spalte.
+ *
+ * @var Column Column::LastName
+ * @brief Die Nachnamen-Spalte.
+ *
+ * @var Column Column::DateOfBirth
+ * @brief Die Geburtstag-Spalte.
+ *
+ * @var Column Column::Mail
+ * @brief Die Mail-Adresse-Spalte.
+ *
+ * @var Column Column::Vip
+ * @brief Die Ist-ein-VIP-Spalte.
+ *
+ * @var Column Column::Count
+ * @brief Keine Spalte, der Zähler wie viele Spalten es gibt.
+ */

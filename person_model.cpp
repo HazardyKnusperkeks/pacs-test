@@ -6,20 +6,12 @@
 
 #include "person_model.hpp"
 
+#include "columns.hpp"
+
 #include <QDate>
 #include <QPixmap>
 
 using namespace Qt::StringLiterals;
-
-enum class Column {
-    Image,
-    FirstName,
-    LastName,
-    DateOfBirth,
-    Mail,
-    Vip,
-    Count,
-};
 
 /**
  * @class PersonModel

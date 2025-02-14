@@ -3,6 +3,8 @@ Project {
 
     Application {
         files: [
+            "columns.hpp",
+            "columns.qdoc",
             "list_view.cpp",
             "list_view.hpp",
             "main.cpp",
