@@ -3,6 +3,8 @@ Project {
 
     Application {
         files: [
+            "list_view.cpp",
+            "list_view.hpp",
             "main.cpp",
         ]
         name: "List View"

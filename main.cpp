@@ -4,6 +4,8 @@
  * @author Björn Schäpers
  */
 
+#include "list_view.hpp"
+
 #include <QApplication>
 
 /**
@@ -16,5 +18,9 @@
  */
 int main(int argc, char* argv[]) {
     QApplication app{argc, argv};
+
+    ListView view;
+    view.show();
+
     return QApplication::exec();
 }
