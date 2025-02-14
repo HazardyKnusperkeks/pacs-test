@@ -178,7 +178,59 @@ bool PersonModel::setData(const QModelIndex& index, const QVariant& value, int r
  * @param[in] role Die gefragte Rolle.
  * @return Der Wert.
  */
-QVariant PersonModel::data(const QModelIndex& index, int role) const noexcept {
+QVariant PersonModel::data(const QModelIndex& index, const int role) const noexcept {
+    if ( !index.isValid() ) {
+        return {};
+    } //if ( !index.isValid() )
+
+    const auto& person = Data[index.row()];
+
+    switch ( static_cast<Column>(index.column()) ) {
+        using enum Column;
+        case Image : {
+            if ( role == Qt::ItemDataRole::DecorationRole ) {
+                return person.Image;
+            } //if ( role == Qt::ItemDataRole::DecorationRole )
+            break;
+        } //case Image
+
+        case FirstName : {
+            if ( role == Qt::ItemDataRole::DisplayRole ) {
+                return person.FirstName;
+            } //if ( role == Qt::ItemDataRole::DecorationRole )
+            break;
+        } //case FirstName
+
+        case LastName : {
+            if ( role == Qt::ItemDataRole::DisplayRole ) {
+                return person.LastName;
+            } //if ( role == Qt::ItemDataRole::DecorationRole )
+            break;
+        } //case LastName
+
+        case DateOfBirth : {
+            if ( role == Qt::ItemDataRole::DisplayRole ) {
+                return person.DateOfBirth;
+            } //if ( role == Qt::ItemDataRole::DecorationRole )
+            break;
+        } //case DateOfBirth
+
+        case Mail : {
+            if ( role == Qt::ItemDataRole::DisplayRole ) {
+                return person.Mail;
+            } //if ( role == Qt::ItemDataRole::DecorationRole )
+            break;
+        } //case Mail
+
+        case Vip : {
+            if ( role == Qt::ItemDataRole::DisplayRole ) {
+                return person.IsVip;
+            } //if ( role == Qt::ItemDataRole::DecorationRole )
+            break;
+        } //case Vip
+
+        case Count : Q_UNREACHABLE();
+    } //switch ( static_cast<Column>(index.column()) )
     return {};
 }
 
