@@ -152,18 +152,6 @@ int PersonModel::columnCount(const QModelIndex& /*parent*/) const noexcept {
 }
 
 /**
- * @brief Setzt die Daten.
- * @author Björn Schäpers
- * @param[in] index Der Index des zu ändernden Eintrags.
- * @param[in] value Der neue Wert.
- * @param[in] role Die Rolle die bearbeitet wird.
- * @return Ob das Editieren erfolgt ist.
- */
-bool PersonModel::setData(const QModelIndex& index, const QVariant& value, int role) noexcept {
-    return false;
-}
-
-/**
  * @brief Liefert die Daten.
  * @author Björn Schäpers
  * @param[in] index Der Index des gefragten Eintrags.
@@ -239,13 +227,7 @@ Qt::ItemFlags PersonModel::flags(const QModelIndex& index) const noexcept {
         return baseFlags;
     } //if ( !index.isValid() )
 
-    auto flags = baseFlags | Qt::ItemFlag::ItemNeverHasChildren;
-
-    if ( index.column() == static_cast<int>(Column::Vip) ) {
-        flags |= Qt::ItemFlag::ItemIsEditable;
-    } //if ( index.column() == static_cast<int>(Column::Vip) )
-
-    return flags;
+    return baseFlags | Qt::ItemFlag::ItemNeverHasChildren;
 }
 
 #include "moc_person_model.cpp"

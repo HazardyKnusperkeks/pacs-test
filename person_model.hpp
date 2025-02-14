@@ -23,7 +23,6 @@ class PersonModel final : public QAbstractItemModel {
     QModelIndex   parent(const QModelIndex& child) const noexcept override;
     int           rowCount(const QModelIndex& parent) const noexcept override;
     int           columnCount(const QModelIndex& parent) const noexcept override;
-    bool          setData(const QModelIndex& index, const QVariant& value, int role) noexcept override;
     QVariant      data(const QModelIndex& index, int role) const noexcept override;
     Qt::ItemFlags flags(const QModelIndex& index) const noexcept override;
 
