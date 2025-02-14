@@ -10,6 +10,7 @@
 
 #include <algorithm>
 #include <iterator>
+#include <numbers>
 #include <ranges>
 
 /** @brief Enthält Implementierungs-Details. */
