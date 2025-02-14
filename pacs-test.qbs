@@ -6,6 +6,8 @@ Project {
             "list_view.cpp",
             "list_view.hpp",
             "main.cpp",
+            "person_model.cpp",
+            "person_model.hpp",
         ]
         name: "List View"
         version: "0.1.0"
