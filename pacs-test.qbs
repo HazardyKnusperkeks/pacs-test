@@ -22,6 +22,19 @@ Project {
         cpp.cxxLanguageVersion: "c++23"
     }
 
+    Application {
+        files: [
+            "contrast-main.cpp",
+        ]
+        name: "Enhance Contrast"
+        version: "0.1.0"
+
+        Depends { name: "cpp" }
+        Depends { name: "Qt"; submodules: ["core", "gui", "widgets"] }
+
+        cpp.cxxLanguageVersion: "c++23"
+    }
+
     Product {
         files: [
             ".clang-format",
