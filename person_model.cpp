@@ -6,13 +6,18 @@
 
 #include "person_model.hpp"
 
+#include <QDate>
+#include <QPixmap>
+
+using namespace Qt::StringLiterals;
+
 enum class Column {
     Image,
     FirstName,
     LastName,
     DateOfBirth,
     Mail,
-    VIP,
+    Vip,
     Count,
 };
 
@@ -26,7 +31,24 @@ enum class Column {
  * @brief Die Daten im Modell.
  */
 
-struct PersonModel::PersonData {};
+/**
+ * @brief Die Daten zu einer Person.
+ * @author Björn Schäpers
+ */
+struct PersonModel::PersonData {
+    /** @brief Das Bild zur Person. */
+    QPixmap Image;
+    /** @brief Der Vorname. */
+    QString FirstName;
+    /** @brief Der Nachname. */
+    QString LastName;
+    /** @brief Der Geburtstag. */
+    QDate   DateOfBirth;
+    /** @brief Die Mail-Adresse. */
+    QString Mail;
+    /** @brief Ob die Person eine VIP ist. */
+    bool    IsVip;
+};
 
 /**
  * @brief Konstruktor.
@@ -49,6 +71,38 @@ PersonModel::~PersonModel(void) noexcept = default;
  */
 void PersonModel::populateWithTestData(void) noexcept {
     beginResetModel();
+    QPixmap image{32, 32};
+    image.fill(Qt::GlobalColor::red);
+    Data.emplace_back(image, "Hugo"_L1, "B."_L1, QDate{1967, 4, 2}, "xyz.xyz@android.com"_L1, false);
+
+    image.fill(Qt::GlobalColor::cyan);
+    Data.emplace_back(image, "James"_L1, "Friendship"_L1, QDate{1969, 2, 3}, "abc.abc@android.com"_L1, false);
+
+    image.fill(Qt::GlobalColor::black);
+    Data.emplace_back(image, "Anand"_L1, "A."_L1, QDate{1999, 12, 12}, "def.def@android.com"_L1, true);
+
+    image.fill(Qt::GlobalColor::darkYellow);
+    Data.emplace_back(image, "John"_L1, "Smith"_L1, QDate{2007, 2, 1}, "ghi.ghi@android.com"_L1, false);
+
+    image.fill(Qt::GlobalColor::darkGray);
+    Data.emplace_back(image, "Larry"_L1, "Page"_L1, QDate{1973, 3, 26}, "jkl.jkl@android.com"_L1, false);
+
+    image.fill(Qt::GlobalColor::yellow);
+    Data.emplace_back(image, QString::fromUtf8("Matías"), "Duarte"_L1, QDate{1973, 1, 30}, "mno.mno@android.com"_L1,
+                      false);
+
+    image.fill(Qt::GlobalColor::green);
+    Data.emplace_back(image, "Jane"_L1, "Smith"_L1, QDate{1967, 4, 2}, "pqr.pqr@android.com"_L1, true);
+
+    image.fill(Qt::GlobalColor::gray);
+    Data.emplace_back(image, "Android"_L1, "User"_L1, QDate{1925, 5, 5}, "stu.stu@android.com"_L1, false);
+
+    image.fill(Qt::GlobalColor::blue);
+    Data.emplace_back(image, QString::fromUtf8("Björn"), QString::fromUtf8("Schäpers"), QDate{1985, 8, 3},
+                      "github@hazardy.de"_L1, true);
+
+    image.fill(Qt::GlobalColor::darkMagenta);
+    Data.emplace_back(image, "John"_L1, "Doe"_L1, QDate{1966, 6, 28}, "john.doe@example.com"_L1, false);
 
     endResetModel();
     return;
@@ -143,9 +197,9 @@ Qt::ItemFlags PersonModel::flags(const QModelIndex& index) const noexcept {
 
     auto flags = baseFlags | Qt::ItemFlag::ItemNeverHasChildren;
 
-    if ( index.column() == static_cast<int>(Column::VIP) ) {
+    if ( index.column() == static_cast<int>(Column::Vip) ) {
         flags |= Qt::ItemFlag::ItemIsEditable;
-    } //if ( index.column() == static_cast<int>(Column::VIP) )
+    } //if ( index.column() == static_cast<int>(Column::Vip) )
 
     return flags;
 }
